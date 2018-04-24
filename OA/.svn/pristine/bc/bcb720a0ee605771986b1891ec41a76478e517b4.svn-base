@@ -1,0 +1,24 @@
+package com.oa.service.implments_achieve;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.oa.dao.UserDao;
+import com.oa.entity.UserEntity;
+import com.oa.service.UserService;
+@Service
+public class UserServiceImp implements UserService{
+private UserDao userdao;
+    @Resource(name="userDaoImp")
+	public void setUserdao(UserDao userdao) {
+	this.userdao = userdao;
+}
+
+	@Override
+	public UserEntity login(String username, String password) {
+		// TODO Auto-generated method stub
+		return userdao.login(username, password);
+	}
+
+}

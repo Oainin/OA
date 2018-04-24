@@ -1,0 +1,513 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>OA办公自动化主界面</title>
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-image: url("/OA/img/535eb53d44c6361e075d23e9c6358c9d.jpg");
+	background-repeat: no-repeat;
+}
+
+#header {
+	height: 30%;
+	width: 100%;
+}
+
+#content {
+	width: 100%;
+	height: 568px;
+	position: absolute;
+	left: 0;
+	top: 140px;
+	opacity: 0.5;
+	background-color: #bbb;
+}
+
+#foot {
+	height: 40px;
+	width: 100%;
+	position: absolute;
+	top: 708px;
+	left: 0;
+	opacity: 0.8;
+	background: linear-gradient(#ccc, #aaa);
+}
+
+#logoortime {
+	height: 100px;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+#time {
+	width: 250px;
+	font-size: 30px;
+	color: #ccc;
+	font-weight: 900;
+	font-family: '黑体';
+	text-align: right;
+}
+
+#days {
+	font-size: 20px;
+	font-weight: 700;
+	color: #ccc;
+	text-align: right;
+}
+
+#timeorday {
+	width: 250px;
+	height: 100px;
+	float: right;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+#logo {
+	float: left;
+	margin: 10px 10px;
+	color: #eee;
+}
+
+#bodyb {
+	background-color: #eee;
+	opacity: 0.3;
+	width: 100%;
+	height: 0;
+	
+}
+
+#nav {
+	width: 100%;
+	height: 40px;
+	position: absolute;
+	left: 0;
+	top: 100px;
+	background: linear-gradient(#fff, #ccc);
+	opacity: 0.5;
+}
+
+#nav  img {
+	margin: 3px 3px;
+	line-height: 40px;
+	float: left;
+}
+
+#memu {
+	width: 300px;
+	height: 400px;
+	position: absolute;
+	left: 5px;
+	top: 133px;
+	background-color: #aaa;
+	display: none;
+	border-radius: 10px;
+	border-top-left-radius: 0;
+	/* opacity: 0.5; */
+}
+
+#memuclass {
+	width: 150px;
+	height: 300px;
+	line-height: 400px;
+	background-color: #fff;
+}
+
+#nav p {
+	line-height: 40px;
+	margin-left: 50px;
+	float: left;
+}
+
+#con {
+	width: 300px;
+	height: 38px;
+	float: right;
+}
+
+#con img {
+	cursor: pointer;
+	margin-left: 20px;
+}
+
+#username {
+	font-size: 20px;
+	font-weight: bold;
+	font-family: '黑体';
+	width: 300px;
+	height: 60px;
+}
+
+#username img {
+	float: right;
+	margin-right: 70px;
+	line-height: 60px;
+	margin-top: 5px;
+	border-radius: 50px;
+}
+
+#name {
+	line-height: 60px;
+	float: left;
+	margin-left: 50px;
+}
+
+#memuclass {
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+#mengban {
+	width: 1400px;
+	height: 800px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: #000;
+	display: none;
+	opacity: 0.7;
+}
+
+#messge {
+	width: 400px;
+	height: 300px;
+	background-color: #fff;
+	position: absolute;
+	left: 450px;
+	top: 200px;
+	display: none;
+	z-index: 1;
+	border-radius: 10px;
+	font-weight: 700;
+	font-family: '黑体';
+}
+
+#closemessge {
+	text-align: right;
+	margin-right: 20px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+#messgecon {
+	width: 100%;
+	height: 100%;
+	margin: 20px auto;
+	position: relative;
+}
+
+#messgecon img {
+	margin-left: 20px;
+	border-radius: 50px;
+	cursor: pointer;
+}
+
+#titles {
+	margin-left: 20px;
+	color: #ccc;
+}
+
+#photo input {
+	background-image: url("/OA/img/imgadd.png");
+	height: 92px;
+	width: 70px;
+	background-size: 100%;
+	opacity: 0;
+	cursor: pointer;
+}
+
+#photo {
+	width: 70px;
+	height: 92px;
+	background-image: url("/OA/img/imgadd.png");
+	background-size: 100%;
+	margin: 10px 20px;
+	cursor: pointer;
+}
+
+#center {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+#fileback {
+	height: 90px;
+	width: 70px;
+	cursor: pointer;
+	position: absolute;
+	top: 30px;
+	left: 30px;
+}
+#fileback p {
+	text-align: center;
+	color: #fff;
+}
+#appphotos{
+	height: 92px;
+	width: 70px;
+	cursor: pointer;
+	background-image: url("/OA/img/imgadd.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+    margin: 20px auto;
+}
+#appphotos input {
+	height: 92px;
+	width: 70px;
+	opacity: 0;
+	cursor: pointer;
+}
+#app{
+width: 100%;
+height: auto;
+
+
+}
+#app td {
+line-height:30px;
+	text-align: center;
+	margin: 0 auto;
+	font-family: '宋体';
+	color: #aaa;
+}
+#valbutton{
+width: 100px;
+height: 30px;
+
+}
+#onnav span{
+margin-left: 30px;
+height: 40px;
+width:70px;
+
+display: block;
+float: left;
+text-align:center;
+line-height: 40px;
+background: linear-gradient(#eee, #ccc);
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+color: #555;
+}
+#onnav span:hover {
+	background: linear-gradient(#ddd, #bbb);
+	color: #fff;
+}
+</style>
+<script src="/OA/js/img.js"></script>
+<script type="text/javascript" src="/OA/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		
+		
+		$('#updown').attr("src", "/OA/img/up126.png");
+		$('#time').css("float", "right");
+
+		setTimeout(function() {
+			$('#bodyb').animate({height:"100px"},1000);
+			$('#logoortime').fadeIn();
+		}, 1000);
+
+		setInterval(times, 1000);
+		$('#startmemu').css("cursor", "pointer");
+		$('#startmemu').click(function() {
+			$('#memu').fadeToggle();
+			$('#memu').mouseleave(function() {
+				$('#memu').fadeOut();
+			});
+		});
+		$('#updown').click(function() {
+			if ($('#updown').attr("src") == "/OA/img/up126.png") {
+
+				$('#updown').attr("src", "/OA/img/down77.png");
+				$('#logo').slideUp();
+				$('#time').slideUp();
+				$('#days').slideUp();
+				$('#bodyb').animate({height:"40px"},1000);
+				$('#nav').animate({
+					top : "0"
+				});
+				$('#content').animate({
+					top : "40px",
+					height : "668px"
+				}, 1000);
+				$('#memu').css("top", "33px");
+
+			} else {
+				$('#updown').attr("src", "/OA/img/up126.png");
+				$('#logo').slideDown();
+				$('#time').slideDown();
+				$('#days').slideDown();
+				$('#bodyb').animate({height:"100px"},1000);
+				$('#nav').animate({
+					top : "100px"
+				});
+				$('#content').animate({
+					top : "140px",
+					height : "568px"
+				});
+				$('#memu').css("top", "133px");
+			}
+		});
+//换肤
+		$('#pifu')
+				.click(
+						function() {
+							$('#mengban').slideDown();
+							$('#messge').slideDown();
+							$('#titles').text("请选择你的皮肤哟！");
+							$('#messgecon')
+									.html(
+											"<img width='60' onclick='huanhu(this.src)' height='60' src='/OA/img/81.jpg'><img width='60' onclick='huanhu(this.src)' height='60' src='/OA/img/535eb53d44c6361e075d23e9c6358c9d.jpg'><img width='60' onclick='huanhu(this.src)' height='60' src='/OA/img/d.jpg'>");
+						});
+		$('#closemessge').click(function() {
+			$('#mengban').slideUp();
+			$('#messge').slideUp();
+		});
+		$('#shezhi')
+				.click(
+						function() {
+							$('#mengban').slideDown();
+							$('#messge').slideDown();
+							$('#titles').text("设置页");
+							$('#messgecon')
+									.html(
+											"<div id='photo'><input type='file' onChange='photos('b')'></div>");
+
+						});
+	});
+	function huanhu(a) {
+		$('body').css("background", " url(" + a + ")");
+		imgcolor(a);
+	}
+	function photos(b) {
+		alert(b);
+	}
+	function times() {
+		var timer = new Date();
+		var h = timer.getHours();
+		var m = timer.getMinutes();
+		var s = timer.getSeconds();
+		var y = timer.getFullYear();
+		var M = timer.getMonth() + 1;
+		var D = timer.getDate();
+		//var d=timer.getDay();'
+		$('#time').text(fom(h) + ":" + fom(m) + ":" + fom(s));
+		$('#days').text(y + "年" + M + "月" + D + "日");
+	}
+	function fom(a) {
+		if (a < 10) {
+			a = "0" + a;
+			return a;
+		} else {
+			return a;
+		}
+	}
+	function clickup() {
+		$('#mengban').slideDown();
+		$('#messge').slideDown();
+		$('#titles').text("请输入你的应用信息!");
+		$('#messgecon')
+				.html("<table  id='app'><tr><td rowspan='3'><div id='appphotos'><input type='file' name='appphoto'></div></td></tr><tr><td>应用名</td><td><input size='18' type='text' name='appname'></td></tr><tr><td>应用地址</td><td><input size='18' type='text' name='appurl'></td></tr><tr><td>应用图片</td><td></td><td><input id='valbutton' type='button' value='验证应用'></td></tr></table>");
+
+	}
+	function imgcolor(img) {
+//	var img="http://127.0.0.1:8080/OA/img/221.png";
+
+	RGBaster.colors(img, {
+		  paletteSize: 10, // 调色板大小
+		  exclude: [ 'rgb(255,255,255)' ],  // 不包括白色
+		  success: function(payload){
+		    // 包含一些颜色信息(payload)的回调
+			// alert(payload.dominant+payload.secondary);
+		    $('#nav').css({
+		    	background: "linear-gradient("+payload.secondary+", "+payload.dominant+")"
+		    	
+		    });
+		    $('#foot').css({
+		    	background: "linear-gradient("+payload.dominant+", "+payload.secondary+")"
+		    	
+		    });   
+		    $('#content').css({
+		    	background: "linear-gradient("+payload.dominant+", "+payload.dominant+")"
+		    	
+		    });  
+		  }
+		})
+	}
+</script>
+</head>
+<body>
+	<div id="bodyb"></div>
+	<!-- 负责背景图蒙版 可以修改透明度 -->
+	<div id="header">
+		<div id="logoortime">
+			<!-- 上部div负责logo和时间  -->
+			<h1 id="logo">OA办公自动化系统</h1>
+			<!-- 添加系统logo -->
+			<div id="timeorday">
+				<p id="time"></p>
+				<!--时间显示  -->
+				<p id="days"></p>
+			</div>
+		</div>
+		<div id="nav">
+			<img id="startmemu" width="30" height="30" src='/OA/img/menu26.png'>
+			<p id="onnav"><span>桌面</span><span>123</span></p>
+			<div id="con">
+				<img width="30" height="30" src='/OA/img/password_1.png'><img
+					width="30" height="30" src='/OA/img/speech-bubble.png'><img
+					width="30" id="shezhi" height="30" src='/OA/img/wrench15.png'><img
+					width="30" id="pifu" height="30" src='/OA/img/tshirt22.png'><img
+					id="updown" width="30" height="30" src=''>
+			</div>
+		</div>
+	</div>
+	<div id="content">
+		<div id="center">
+			<div id="fileback">
+				<img width="70" onclick="clickup()" height="90" src='/OA/img/221.png'><br />
+				<p >上架</p>
+			</div>
+		</div>
+	</div>
+	<!--中心框架 负责功能卡显示 和页面显示  -->
+	<div id="foot">123</div>
+	<!--页脚显示 显示在线人数、通知等  -->
+	<div id="memu">
+		<!--菜单div  -->
+		<div id="username">
+			<!-- 用户信息div -->
+			<p id="name">张三
+			<p>
+				<!--用户名显示  -->
+				<img width="50" height="50" src='/OA/img/d.jpg'>
+		</div>
+		<!--用户头像显示  -->
+
+		<div id="memuclass"></div>
+		<!--菜单栏主类  -->
+	</div>
+	<div id="mengban"></div>
+	<!--网页使用蒙版  -->
+	<div id="messge">
+		<p id='closemessge'>X</p>
+		<h2 id="titles"></h2>
+		<div id="messgecon"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>OA办公自动化主界面</title>
+<style type="text/css">
+*{
+margin: 0;
+padding: 0;
+
+}
+body {
+	background-image: url("/OA/img/535eb53d44c6361e075d23e9c6358c9d.jpg");
+}
+</style>
+</head>
+<body>
+<div></div>
+</body>
+</html>

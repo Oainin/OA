@@ -1,0 +1,5 @@
+package com.oa.entity;
+
+public class UserEntity {
+
+}

@@ -1,0 +1,6 @@
+
+import com.smartoasystem.service.UserService;
+
+public class UserServiceImp implements UserService{
+
+}

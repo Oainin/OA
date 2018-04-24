@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.2.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+           http://www.springframework.org/schema/tx 
+           http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+           <!-- 使用注解 
+           	开启注解
+            -->
+         <!--   <context:annotation-config/> -->
+           <!-- 配置注解扫描的包 -->
+           <context:component-scan base-package="com.oa"></context:component-scan>
+           <!-- 开启aop -->
+           <aop:aspectj-autoproxy/>
+           <!-- 加载properties配置文件 -->
+           <context:property-placeholder location="classpath:jdbc.properties"/>
+           <!-- 配置数据源  连接池   dbcp  c3p0 -->
+           <bean id="dataSource"  class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+           		<property name="driverClassName" value="${jdbc.driver}" />
+				<property name="url" value="${jdbc.url}" />
+				<property name="username" value="${jdbc.username}" />
+				<property name="password" value="${jdbc.password}" />
+           </bean>
+           <!-- 初始化会话工厂 -->
+           <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+           		<!-- 注入数据源 -->
+           		<property name="dataSource" ref="dataSource"></property>
+           		<!-- 注入hibernate的配置 -->
+           		<property name="hibernateProperties">
+           			<props>
+           				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+           				<prop key="hibernate.show_sql">true</prop>
+           				<prop key="hibernate.format_sql">true</prop>
+           				<prop key="hibernate.hbm2ddl.auto">update</prop>
+           			</props>
+           		</property>
+           		<!-- 注入hibernate的映射 -->
+           		<!-- <property name="annotatedClasses">
+           			<list>
+           				<value>com.entity.UserEntity</value>
+           			</list>
+           		</property> -->
+           		<!-- 扫描实体类 -->
+           		<property name="packagesToScan" value="com.s2sh.entity"></property>
+           </bean>
+           <!-- 配置事务管理 -->
+           <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+           		<!-- 配置管理会话工厂的事务 -->
+           		<property name="sessionFactory" ref="sessionFactory"></property>
+           </bean>
+           <!-- 通过注解管理事务 -->
+           <tx:annotation-driven transaction-manager="transactionManager"/>
+           
+           <!-- xml配置事务 -->
+           <aop:config>
+				<aop:advisor advice-ref="ad" pointcut="execution (public * com.oa.service.implments_achieve.*.*(..))"/>
+           </aop:config>
+           <!-- 管理事务 -->
+           <tx:advice id="ad">
+           		<tx:attributes>
+           			<tx:method name="find*" read-only="true" propagation="REQUIRED"/>
+           			<tx:method name="update*" read-only="false" propagation="REQUIRED"/>
+           			<tx:method name="delete*" read-only="false" propagation="REQUIRED"/>
+           			<tx:method name="*"/>
+           		</tx:attributes>
+           </tx:advice>
+           
+           <!-- 配置hibernatetemplate -->
+           <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+           		<property name="sessionFactory" ref="sessionFactory"></property>
+           </bean>
+</beans>

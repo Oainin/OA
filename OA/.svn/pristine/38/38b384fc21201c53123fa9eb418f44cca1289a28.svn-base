@@ -1,0 +1,184 @@
+$(function() {
+	$("#icon1").click(function(){
+		if($("#icon_news").attr("display")!="block"){
+			$("#icon_news").attr("display","block")
+			$("#icon_news").show(); 
+		}else{
+			$("#icon_news").attr("display","none")
+			$("#icon_news").hide(); 
+		}
+	});
+	$("#icon2").click(function(){
+		if($("#icon_infm").attr("display")!="block"){
+			$("#icon_infm").attr("display","block")
+			$("#icon_infm").show(); 
+		}else{
+			$("#icon_infm").attr("display","none")
+			$("#icon_infm").hide(); 
+		}
+	});
+	$("#icon3").click(function(){
+		if($("#icon_pope").attr("display")!="block"){
+			$("#icon_pope").attr("display","block")
+			$("#icon_pope").show(); 
+		}else{
+			$("#icon_pope").attr("display","none")
+			$("#icon_pope").hide(); 
+		}
+	});
+	$(".icon_img").mouseout(function(){
+		$("#icon_news").hide();
+		$("#icon_infm").hide();
+		$("#icon_pope").hide();
+	});
+		
+		$('#updown').attr("src", "/OA/img/up126.png");
+		$('#time').css("float", "right");
+
+		setTimeout(function() {
+			$('#bodyb').animate({height:"100px"},1000);
+			$('#logoortime').fadeIn();
+		}, 1000);
+
+		setInterval(times, 1000);
+		$('#startmemu').css("cursor", "pointer");
+		$('#startmemu').click(function() {
+			$('#memu').fadeToggle();
+			$('#memu').mouseleave(function() {
+				$('#memu').fadeOut();
+			});
+		});
+		$('#updown').click(function() {
+			if ($('#updown').attr("src") == "/OA/img/up126.png") {
+
+				$('#updown').attr("src", "/OA/img/down77.png");
+				$('#logo').slideUp();
+				$('#time').slideUp();
+				$('#days').slideUp();
+				$('#bodyb').animate({height:"40px"},1000);
+				$('#nav').animate({
+					top : "0"
+				});
+				$('#content').animate({
+					top : "40px",
+					height : "668px"
+				}, 1000);
+				$('#memu').css("top", "33px");
+
+			} else {
+				$('#updown').attr("src", "/OA/img/up126.png");
+				$('#logo').slideDown();
+				$('#time').slideDown();
+				$('#days').slideDown();
+				$('#bodyb').animate({height:"100px"},1000);
+				$('#nav').animate({
+					top : "100px"
+				});
+				$('#content').animate({
+					top : "140px",
+					height : "568px"
+				});
+				$('#memu').css("top", "133px");
+			}
+		});
+//换肤
+		$('#pifu')
+				.click(
+						function() {
+							$('#mengban').slideDown();
+							$('#messge').slideDown();
+							$('#titles').text("请选择你的皮肤哟！");
+							$('#messgecon')
+									.html(
+											"<img width='60' onclick='huanhu(this.src)' height='60' src='/OA/img/81.jpg'><img width='60' onclick='huanhu(this.src)' height='60' src='/OA/img/535eb53d44c6361e075d23e9c6358c9d.jpg'><img width='60' onclick='huanhu(this.src)' height='60' src='/OA/img/d.jpg'>");
+						});
+		$('#closemessge').click(function() {
+			$('#mengban').slideUp();
+			$('#messge').slideUp();
+		});
+		$('#shezhi')
+				.click(
+						function() {
+							$('#mengban').slideDown();
+							$('#messge').slideDown();
+							$('#titles').text("设置页");
+							$('#messgecon')
+									.html(
+											"<div id='photo'><input type='file' onChange='photos('b')'></div>");
+
+						});
+		
+		 $.ajax({
+			   type: "POST",
+			   url: '${pageContext.request.contextPath }/user_messge',
+			   data: "",
+			   success: function(msg){
+				   var str=JSON.parse(msg);
+				   $('#name').text(str.t.name);
+				   $('#userimg').attr('src',str.t.userphoto);
+				   if(str.t.admin==1){
+					   $('#fileback').html("<img width='70' onclick='clickup()' height='90' src='/OA/img/221.png'><br /><p >上架</p>");
+				   }
+				   alert(msg);
+				   }
+			 });  
+	});
+	function huanhu(a) {
+		$('body').css("background", " url(" + a + ")");
+		imgcolor(a);
+	}
+	function photos(b) {
+		alert(b);
+	}
+	function times() {
+		var timer = new Date();
+		var h = timer.getHours();
+		var m = timer.getMinutes();
+		var s = timer.getSeconds();
+		var y = timer.getFullYear();
+		var M = timer.getMonth() + 1;
+		var D = timer.getDate();
+		//var d=timer.getDay();'
+		$('#time').text(fom(h) + ":" + fom(m) + ":" + fom(s));
+		$('#days').text(y + "年" + M + "月" + D + "日");
+	}
+	function fom(a) {
+		if (a < 10) {
+			a = "0" + a;
+			return a;
+		} else {
+			return a;
+		}
+	}
+	function clickup() {
+		$('#mengban').slideDown();
+		$('#messge').slideDown();
+		$('#titles').text("请输入你的应用信息!");
+		$('#messgecon')
+				.html("<form action='${pageContext.request.contextPath }/user_upDo' method='POST' enctype='multipart/form-data'><table  id='app'><tr><td rowspan='3'><div id='appphotos'><input type='file' name='appphoto'></div></td></tr><tr><td>应用名</td><td><input size='18' type='text' name='appname'></td></tr><tr><td>应用地址</td><td><input size='18' type='text' name='appurl'></td></tr><tr><td>应用图片</td><td></td><td><input id='valbutton' type='submit' value='验证应用'></td></tr></table></form>");
+
+	}
+	function imgcolor(img) {
+//	var img="http://127.0.0.1:8080/OA/img/221.png";
+
+	RGBaster.colors(img, {
+		  paletteSize: 10, // 调色板大小
+		  exclude: [ 'rgb(255,255,255)' ],  // 不包括白色
+		  success: function(payload){
+		    // 包含一些颜色信息(payload)的回调
+			// alert(payload.dominant+payload.secondary);
+		    $('#nav').css({
+		    	background: "linear-gradient("+payload.secondary+", "+payload.dominant+")"
+		    	
+		    });
+		    $('#foot').css({
+		    	background: "linear-gradient("+payload.dominant+", "+payload.secondary+")"
+		    	
+		    });   
+		    $('#content').css({
+		    	background: "linear-gradient("+payload.dominant+", "+payload.dominant+")"
+		    	
+		    });  
+		  }
+		})
+	}

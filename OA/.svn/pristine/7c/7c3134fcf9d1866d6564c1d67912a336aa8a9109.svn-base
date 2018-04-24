@@ -1,0 +1,7 @@
+package com.oa.dao;
+
+import com.oa.entity.UserEntity;
+
+public interface UserDao {
+public UserEntity login(String username,String password);
+}

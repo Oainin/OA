@@ -1,0 +1,7 @@
+package com.oa.dao.implments_achieve;
+
+import com.oa.dao.UserDao;
+
+public class UserDaoImp implements UserDao{
+	
+}

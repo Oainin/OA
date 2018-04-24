@@ -1,0 +1,12 @@
+package com.oa.service;
+
+import java.util.List;
+
+import com.oa.entity.UserApp;
+import com.oa.entity.UserEntity;
+
+public interface UserService {
+public UserEntity login(String username,String password);
+public List<UserApp> appselect(int uid);
+public boolean appinsert(UserApp app);
+}

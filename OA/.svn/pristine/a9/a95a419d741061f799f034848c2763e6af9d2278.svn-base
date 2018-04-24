@@ -1,0 +1,84 @@
+package com.oa.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
+public class UserApp {
+private int aid;
+private String appname;
+private String appurl;
+private String appimg;
+private String apptime;
+private int uid;
+private String status;
+
+
+
+public String getStatus() {
+	return status;
+}
+public void setStatus(String status) {
+	this.status = status;
+}
+public int getUid() {
+	return uid;
+}
+public void setUid(int uid) {
+	this.uid = uid;
+}
+@Id
+@GeneratedValue(strategy=GenerationType.AUTO)
+public int getAid() {
+	return aid;
+}
+public void setAid(int aid) {
+	this.aid = aid;
+}
+
+
+public String getAppname() {
+	return appname;
+}
+public void setAppname(String appname) {
+	this.appname = appname;
+}
+public String getAppurl() {
+	return appurl;
+}
+public void setAppurl(String appurl) {
+	this.appurl = appurl;
+}
+public String getAppimg() {
+	return appimg;
+}
+public void setAppimg(String appimg) {
+	this.appimg = appimg;
+}
+public String getApptime() {
+	return apptime;
+}
+public void setApptime(String apptime) {
+	this.apptime = apptime;
+}
+public UserApp() {
+	super();
+	// TODO Auto-generated constructor stub
+}
+public UserApp(int aid, String appname, String appurl, String appimg, String apptime) {
+	super();
+	this.aid = aid;
+	this.appname = appname;
+	this.appurl = appurl;
+	this.appimg = appimg;
+	this.apptime = apptime;
+}
+@Override
+public String toString() {
+	return "UserApp [aid=" + aid + ", appname=" + appname + ", appurl=" + appurl + ", appimg="
+			+ appimg + ", apptime=" + apptime + "]";
+}
+
+}

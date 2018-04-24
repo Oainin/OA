@@ -1,0 +1,53 @@
+package com.oa.dao.implments_achieve;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.stereotype.Repository;
+
+import com.oa.dao.UserDao;
+import com.oa.entity.UserApp;
+import com.oa.entity.UserEntity;
+@Repository
+public class UserDaoImp implements UserDao{
+private HibernateTemplate hibernateTemplate;
+    @Resource(name="hibernateTemplate")
+	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+	this.hibernateTemplate = hibernateTemplate;
+}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public UserEntity login(String username, String password) {
+/*		System.out.println("---------------------------------------------------------------------------------------------");*/
+		List<UserEntity> lists = hibernateTemplate.find("from UserEntity where username=? and password=?",username,password);
+		return lists.size() > 0 ? lists.get(0):null;
+	}
+
+	@Override
+	public boolean logintime(String username) {
+		boolean flag=hibernateTemplate.bulkUpdate("update UserEntity u set u.logintime=now() where u.username=?",username)>0;
+		return flag;
+	}
+
+	@Override
+	public List<UserApp> appselect(int uid) {
+List<UserApp> list=hibernateTemplate.find("from UserApp where uid=?",uid);
+		return list;
+	}
+
+	@Override
+	public boolean appinsert(UserApp app) {
+   if(app!=null) {
+	   
+	   hibernateTemplate.save(app);
+	   
+	   return true;
+   }else {
+		
+		return false;
+	}
+	}
+}

@@ -1,0 +1,51 @@
+package com.oa.controller;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.oa.entity.UserEntity;
+import com.oa.service.UserService;
+import com.opensymphony.xwork2.ActionSupport;
+
+@Controller
+@Scope("prototype")
+public class UserController extends ActionSupport {
+	private UserService service;
+    private HttpServletRequest req;
+	@Resource(name = "userServiceImp")
+	public void setService(UserService service) {
+		this.service = service;
+	}
+
+	private UserEntity user;
+
+	public UserEntity getUser() {
+		return user;
+	}
+
+	public void setUser(UserEntity user) {
+		this.user = user;
+	}
+
+	public String login() {
+		return "login";
+
+	}
+
+	public String loginDo() {
+		UserEntity users = service.login(user.getUsername(), user.getPassword());
+		if (users != null) {
+			//req.setAttribute("USER", users);
+			return SUCCESS;
+		}
+
+		else {
+			return "login";
+		}
+
+	}
+}

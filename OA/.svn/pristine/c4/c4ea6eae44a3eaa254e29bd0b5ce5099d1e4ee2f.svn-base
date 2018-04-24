@@ -1,0 +1,58 @@
+$(function(){
+	$("#icon1").click(function() {
+		var news = $("#icon_news");
+		if (news.css("display") != "block") {
+			news.css("display", "block");
+		} else {
+			news.css("display", "none");
+		}
+	});
+	$("#icon2").click(function() {
+		var infm = $("#icon_infm");
+		if (infm.css("display") != "block") {
+			infm.css("display", "block");
+		} else {
+			infm.css("display", "none");
+		}
+	});
+	$("#icon3").click(function() {
+		var pope = $("#icon_pope");
+		$.ajax({
+			type : "POST",
+			url : '${pageContext.request.contextPath }/user_messge',
+			data : "",
+			success : function(msg) {
+				var str= JSON.parse(msg);
+				var uid=str.t.uid;
+				var department=$("#department");
+				department.css({
+//					'background-color': '#737EB1',
+					position: 'relative',
+					top: '20px',
+					border: '0px solid black',
+				});
+				department.html("");
+				var ul=$("<ul></ul>");
+				ul.appendTo(department);
+				ul.css({
+//					"list-style-type":none,
+				});
+				ul.html("");
+				var li="<span >部门1</span><br/>";
+				for(var i=0;i<10;i++){
+					li+="<li style='list-style-type:none;margin-left:20px'>"+i+"haha</li>";
+				}
+				ul.html(li);
+			}
+		});
+		if (pope.css("display") != "block") {
+			pope.css("display", "block");
+		} else {
+			pope.css("display", "none");
+		}
+	});
+
+	$(".btn-white-big").click(function() {
+		$(".icon_img").css("display", "none");
+	});
+})

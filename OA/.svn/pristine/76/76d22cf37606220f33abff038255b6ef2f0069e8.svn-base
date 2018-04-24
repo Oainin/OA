@@ -1,0 +1,60 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>企业OA注册界面</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Eminent Login Form Widget Responsive, Login form web template,Flat Pricing tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+<link href="css/reg.css" rel='stylesheet' type='text/css' media="all" />
+
+<script type="text/javascript" src="/OA/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="/OA/js/reg.js"></script>
+</head>
+<body>
+<div style="margin-top: 70px;" class="form-w3ls">
+    <ul class="tab-group cl-effect-4">
+        <li class="tab active">
+       		<a href="#signin-agile">注册</a>
+       	</li>
+    </ul>
+    <div class="tab-content">
+        <div id="signin-agile" style="display: block;">   
+			<form action="${pageContext.request.contextPath }/user_regDo" method="post">
+				<div><span>账号：</span><input id="username" type="text" name="user.username"></div>
+				<input id="name" type="hidden" name="user.name">
+				<div><span>密码：</span><input type="password" name="user.password"></div>
+				<div><span>性别：</span>
+					<input type="radio" name="user.sex" value="男" checked="checked"><span>男</span>
+					<input type="radio" name="user.sex" value="女"><span>女</span>
+				</div>
+				<div><span>手机：</span><input type="tel" name="user.phone"></div>
+				<div><span>出生：</span><input type="date" name="user.birthday"></div>
+				<input type="hidden" value="/OA/img/HarryPotter.png" name="user.userphoto">
+				<div><span>职位：</span>
+					 <select id="position" name="user.admin">
+						<option value=""></option>
+						<option value="0">员工</option>
+						<option value="1">管理员</option>
+						<option value="2">总经理</option>
+						<option value="3">项目经理</option>
+					 </select>
+				</div>
+				<div id="addresss"><span>地址：</span>
+					<select id="sheng" onchange="ajaxaa(this.value,'shi')"></select>
+					<select id="shi" onchange="ajaxaa(this.value,'qu')" ></select>
+					<select id="qu" ></select><span>区/县</span>
+				</div>
+				<input id="adress" type="hidden" name="user.address"/>
+				<input type="submit" class="sign-in" value="开始注册">
+			</form>
+		</div>
+    </div>
+</div>  
+<p class="copyright">&copy; 2017 OA 为便捷而生</p>
+</body>
+</html>

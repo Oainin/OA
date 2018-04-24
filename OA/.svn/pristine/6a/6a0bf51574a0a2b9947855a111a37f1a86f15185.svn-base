@@ -1,0 +1,7 @@
+package com.smartoasystem.dao.implments_achieve;
+
+import com.smartoasystem.dao.UserDao;
+
+public class UserDaoImp implements UserDao{
+	
+}

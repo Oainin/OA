@@ -1,0 +1,28 @@
+package com.oa.dao.implments_achieve;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.orm.hibernate3.HibernateTemplate;
+import org.springframework.stereotype.Repository;
+
+import com.oa.dao.UserDao;
+import com.oa.entity.UserEntity;
+@Repository
+public class UserDaoImp implements UserDao{
+private HibernateTemplate hibernateTemplate;
+    @Resource(name="hibernateTemplate")
+	public void setHibernateTemplate(HibernateTemplate hibernateTemplate) {
+	this.hibernateTemplate = hibernateTemplate;
+}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public UserEntity login(String username, String password) {
+/*		System.out.println("---------------------------------------------------------------------------------------------");*/
+		List<UserEntity> lists = hibernateTemplate.find("from UserEntity where username=? and password=?",username,password);
+		return lists.size() > 0 ? lists.get(0):null;
+	}
+	
+}

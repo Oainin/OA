@@ -1,0 +1,44 @@
+package com.oa.entity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Result<T> {
+private int struts;
+private boolean flag;
+private T t;
+private List<T> list=new ArrayList<>();
+private String content;
+
+public String getContent() {
+	return content;
+}
+public void setContent(String content) {
+	this.content = content;
+}
+public int getStruts() {
+	return struts;
+}
+public void setStruts(int struts) {
+	this.struts = struts;
+}
+public boolean isFlag() {
+	return flag;
+}
+public void setFlag(boolean flag) {
+	this.flag = flag;
+}
+public T getT() {
+	return t;
+}
+public void setT(T t) {
+	this.t = t;
+}
+public List<T> getList() {
+	return list;
+}
+public void setList(List<T> list) {
+	this.list = list;
+}
+
+}

@@ -1,0 +1,7 @@
+package com.oa.service;
+
+import com.oa.entity.UserEntity;
+
+public interface UserService {
+public UserEntity login(String username,String password);
+}

@@ -1,0 +1,50 @@
+package com.oa.controller;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import com.oa.entity.UserEntity;
+import com.oa.service.UserService;
+
+@Controller
+@Scope("prototype")
+public class UserController {
+private UserService service;
+
+@Resource(name="userServiceImp")
+public void setService(UserService service) {
+	this.service = service;
+}
+private UserEntity user;
+
+
+
+public UserEntity getUser() {
+	return user;
+}
+public void setUser(UserEntity user) {
+	this.user = user;
+}
+public String login() {
+	return "login";
+	
+}
+public String loginDo() {
+UserEntity users=service.login(user.getUsername(),user.getPassword());
+	if(users!=null) {
+		return "SUCCESS";
+	}
+	
+	
+	
+	return "login";
+	
+	
+	
+	
+}
+}

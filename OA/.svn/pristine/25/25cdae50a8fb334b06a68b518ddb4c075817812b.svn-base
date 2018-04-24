@@ -1,0 +1,49 @@
+var uid;
+function getuid(){
+	$.ajax({
+		type : "POST",
+		url : '${pageContext.request.contextPath }/user_messge',
+		data : "",
+		success : function(msg) {
+			var str= JSON.parse(msg);
+//			alert(str.t.uid+"!!!!!!!");
+			uid=str.t.uid;
+			return str.t.uid;
+		}
+	});	
+}
+$(function(){
+	$("#icon1").click(function() {
+		alert(uid);
+		alert(getuid());
+		var news = $("#icon_news");
+		if (news.css("display") != "block") {
+			news.css("display", "block");
+		} else {
+			news.css("display", "none");
+		}
+	});
+	$("#icon2").click(function() {
+		//alert(getuid());
+		var infm = $("#icon_infm");
+		if (infm.css("display") != "block") {
+			infm.css("display", "block");
+		} else {
+			infm.css("display", "none");
+		}
+	});
+	$("#icon3").click(function() {
+		//alert(getuid());
+		var pope = $("#icon_pope");
+		if (pope.css("display") != "block") {
+			pope.css("display", "block");
+		} else {
+			pope.css("display", "none");
+		}
+	});
+
+	$(".btn-white-big").click(function() {
+		$(".icon_img").css("display", "none");
+	});
+	
+})

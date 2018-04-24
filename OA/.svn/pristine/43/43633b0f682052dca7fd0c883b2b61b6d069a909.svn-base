@@ -1,0 +1,5 @@
+package com.huohr.dao;
+
+public interface UserDao {
+
+}

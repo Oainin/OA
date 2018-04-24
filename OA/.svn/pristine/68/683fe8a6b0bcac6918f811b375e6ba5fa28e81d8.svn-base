@@ -1,0 +1,168 @@
+{
+  "plugins": {
+    "guess-types": {
+      
+    },
+    "outline": {
+      
+    },
+    "complete_strings": {
+      
+    },
+    "es_modules": {
+      
+    },
+    "eslint": {
+      
+    },
+    "highlight": {
+      
+    },
+    "jscs": {
+      
+    },
+    "doc_comment": {
+      
+    },
+    "jshint": {
+      
+    },
+    "lint": {
+      
+    },
+    "webpack": {
+      
+    },
+    "push": {
+      
+    },
+    "nuxeo": {
+      
+    },
+    "chrome-apps": {
+      
+    },
+    "chrome-extension": {
+      
+    },
+    "requirejs": {
+      
+    },
+    "node": {
+      
+    },
+    "gas": {
+      
+    },
+    "jasmine": {
+      
+    },
+    "tabris": {
+      
+    },
+    "qunit": {
+      
+    },
+    "angular1": {
+      
+    },
+    "cordovajs": {
+      
+    },
+    "yui3": {
+      
+    },
+    "browser-extension": {
+      
+    },
+    "ckeditor4.4.x": {
+      
+    },
+    "closure": {
+      
+    },
+    "dojotoolkit1.10": {
+      
+    },
+    "node-express": {
+      
+    },
+    "extjs4.2.1": {
+      
+    },
+    "gulp": {
+      
+    },
+    "gmaps3.frozen": {
+      
+    },
+    "gcharts": {
+      
+    },
+    "grunt": {
+      
+    },
+    "liferay": {
+      
+    },
+    "threejs": {
+      
+    },
+    "snabbt": {
+      
+    },
+    "qooxdoo4.1": {
+      
+    },
+    "phaser": {
+      
+    },
+    "node-mongoose": {
+      
+    },
+    "node-mongodb-native": {
+      
+    },
+    "meteor": {
+      
+    },
+    "node-extension": {
+      
+    },
+    "delite": {
+      
+    },
+    "protractor": {
+      
+    },
+    "requirejs-extension": {
+      
+    },
+    "aui1.5.x": {
+      
+    },
+    "bootstrap": {
+      
+    },
+    "jquery-ui1-12": {
+      
+    },
+    "jquery-extension": {
+      
+    },
+    "jquery-mobile1.5": {
+      
+    }
+  },
+  "libs": [
+    "ecma5",
+    "browser",
+    "fetch",
+    "webidl",
+    "underscore",
+    "titanium",
+    "jquery",
+    "chai"
+  ],
+  "ecmaVersion": 5
+}

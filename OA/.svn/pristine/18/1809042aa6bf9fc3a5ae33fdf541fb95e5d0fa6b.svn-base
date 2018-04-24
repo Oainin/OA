@@ -1,0 +1,153 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>个人信息</title>
+		<meta name="keywords" content="个人信息" />
+		<meta name="description" content="个人信息" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+		<link rel="stylesheet" href="css/style1.css" type="text/css" />
+		<script src="js/jquery-1.10.2.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/jquery.SuperSlide.2.1.1.js" ></script>
+</head>
+<body>
+<div class="top">
+			<div class="top-logo">
+	            <div class="logo_box">
+	                <h6 class="hidden-xs">个人信息</h6>
+	                <div class="login">
+	                    <div class="collection  hidden-xs"><span>设为主页</span><b>丨</b><span>收藏</span></div>
+		                <div class="switch">
+		                    <div class="zw"><a href="/" style="color: #009944;">中文版</a></div>
+		                    <div class="yw"><a href="/english" style="color: #fff;">英文版</a></div>
+		                    <div class="hk"><a href="/" style="color: #009944;">中文版</a></div>
+		                </div>
+	               </div>
+	           </div>
+	       </div>
+	     
+		</div>
+		<header class="header-frontend">
+	        <div class="navbar navbar-default navbar-static-top">
+	            <div class="container">
+	                <div class="navbar-header">
+	                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+	                        <span class="icon-bar"></span>
+	                        <span class="icon-bar"></span>
+	                        <span class="icon-bar"></span>
+	                    </button>
+	                    <a class="navbar-brand hidden-lg" href="index.html"><img src="images/logo.png"/></a>
+	                </div>
+	                <div class="navbar-collapse collapse" style="height: 1px;">
+	                    <ul class="nav navbar-nav">
+	                        <li class="active"><a href="gindex.jsp">主页</a></li>
+	                        <li><a href="about.jsp">关于我们</a></li>
+	                        <li><a href="honor.jsp">成就</a> </li>
+	                        <li><a href="product.jsp">产品</a></li>
+	                        <li><a href="news.jsp">新闻</a></li>
+	                        <li><a href="talent.jsp">资源</a></li>
+	                        <li><a href="contact.jsp">联系我们</a></li>
+	                        <li><a href="online.jsp">反馈</a></li>
+	                    </ul>
+	                </div>
+	            </div>
+	        </div>
+       </header>
+       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			  <ol class="carousel-indicators">
+			    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+			    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+			  </ol>
+			 
+		<div class="pst_bg">
+			<div class="pst">
+		    	当前位置：
+		        <a href="">个人信息</a>&gt;
+		        <a href="">修改个人信息</a>
+		    </div>
+		</div>
+		<div class="scd clearfix">
+	<div class="scd_l">
+    	<div class="s_name">
+        	<img src="images/t4.png" width="150" height="48" alt="">
+            <i>&nbsp;</i>
+        </div>
+       
+    </div>
+    <div class="scd_r">
+    	<div class="r_name"><span>个人信息修改</span></div>
+        <div class="book_m clearfix">
+            <ul>
+                <li>
+                    <span class="name">账号名：</span>
+                    <input name="username" type="text" id="username">
+                </li>
+                <li>
+                    <span class="name">密码：</span>
+                    <input name="password" type="text" id="password">
+                </li>
+                <li>
+                    <span class="name">确认密码：</span>
+                    <input name="password" type="text" id="password">
+                </li>
+                <li>
+                    <span class="name">生日：</span>
+                    <input name="birthday" type="text" id="birthday">
+                </li>
+				
+				<form>
+					<span class="name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性别：</span>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="sex" value="male" checked>男&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+					<input type="radio" name="sex" value="female">女
+					</form> 
+					<br>
+				
+                <li>
+                    <span class="name">手机：</span>
+                    <input name="phone" type="text" id="phone">
+                </li>
+
+            </ul>
+            <ul>
+                <li>
+                    <span class="name">地址：</span>
+                    <input name="phone" type="text" id="phone">
+                </li>
+				<li>
+                    <span class="name">头像：</span>
+                    <input name="userphoto" type="text" id="userphoto">
+                </li>
+                <li>
+                    <span class="name">&nbsp;</span>
+                    <input name="" type="submit" value="提交">
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+		
+		<div class="copyright hidden-md hidden-xs mt">
+    	<div class="container">
+    		<div class="row">
+    			<div class="copy-left">
+    				
+    				
+    			</div>
+    			
+    				
+    			</div>
+    		</div>
+    	</div>
+    </div>
+    <div class="copy  hidden-md hidden-xs ">Shantou Lilai fine chemical raw materials Co. Ltd. &nbsp; &nbsp; &nbsp; &nbsp; ICP备案号：粤ICP备字123456号</div>
+    <div class="copy hidden-lg mt">
+    	<p>Shantou Lilai fine chemical raw materials Co. Ltd.</p>
+    	
+    </div>
+</body>
+</html>

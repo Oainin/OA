@@ -1,0 +1,371 @@
+@charset "UTF-8";
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-image: url("/OA/img/535eb53d44c6361e075d23e9c6358c9d.jpg");
+	background-repeat: no-repeat;
+}
+
+#header {
+	height: 30%;
+	width: 100%;
+}
+
+#content {
+	width: 100%;
+	height: 568px;
+	position: absolute;
+	left: 0;
+	top: 140px;
+	opacity: 0.5;
+	background-color: #bbb;
+}
+
+#foot {
+	height: 30px;
+	width: 100%;
+	position: absolute;
+	top: 708px;
+	left: 0;
+	opacity: 0.8;
+	background: linear-gradient(#ccc, #aaa);
+}
+
+#logoortime {
+	height: 100px;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+#time {
+	width: 250px;
+	font-size: 30px;
+	color: #ccc;
+	font-weight: 900;
+	font-family: '黑体';
+	text-align: right;
+}
+
+#days {
+	font-size: 20px;
+	font-weight: 700;
+	color: #ccc;
+	text-align: right;
+}
+
+#timeorday {
+	width: 250px;
+	height: 100px;
+	float: right;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+
+#logo {
+	float: left;
+	margin: 10px 10px;
+	color: #eee;
+}
+
+#bodyb {
+	background-color: #eee;
+	opacity: 0.3;
+	width: 100%;
+	height: 0;
+	
+}
+
+#nav {
+	width: 100%;
+	height: 40px;
+	position: absolute;
+	left: 0;
+	top: 100px;
+	background: linear-gradient(#fff, #ccc);
+	opacity: 0.5;
+}
+
+#nav  img {
+	margin: 3px 3px;
+	line-height: 40px;
+	float: left;
+}
+
+#memu {
+	width: 300px;
+	height: 400px;
+	position: absolute;
+	left: 5px;
+	top: 133px;
+	background-color: #aaa;
+	display: none;
+	border-radius: 10px;
+	border-top-left-radius: 0;
+	/* opacity: 0.5; */
+}
+
+#memuclass {
+	width: 150px;
+	height: 300px;
+	line-height: 400px;
+	background-color: #fff;
+}
+
+#nav p {
+	line-height: 40px;
+	margin-left: 50px;
+	float: left;
+}
+
+#con {
+	width: 300px;
+	height: 38px;
+	float: right;
+}
+
+#con img {
+	cursor: pointer;
+	margin-left: 20px;
+}
+
+#username {
+	font-size: 20px;
+	font-weight: bold;
+	font-family: '黑体';
+	width: 300px;
+	height: 60px;
+}
+
+#username img {
+	float: right;
+	margin-right: 70px;
+	line-height: 60px;
+	margin-top: 5px;
+	border-radius: 50px;
+}
+
+#name {
+	line-height: 60px;
+	float: left;
+	margin-left: 50px;
+}
+
+#memuclass {
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+#mengban {
+	width: 1400px;
+	height: 800px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: #000;
+	display: none;
+	opacity: 0.7;
+}
+
+#messge {
+	width: 400px;
+	height: 300px;
+	background-color: #fff;
+	position: absolute;
+	left: 450px;
+	top: 200px;
+	display: none;
+	z-index: 1;
+	border-radius: 10px;
+	font-weight: 700;
+	font-family: '黑体';
+}
+
+#closemessge {
+	text-align: right;
+	margin-right: 20px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+#messgecon {
+	width: 100%;
+	height: 100%;
+	margin: 20px auto;
+	position: relative;
+}
+
+#messgecon img {
+	margin-left: 20px;
+	border-radius: 50px;
+	cursor: pointer;
+}
+
+#titles {
+	margin-left: 20px;
+	color: #ccc;
+}
+
+#photo input {
+	background-image: url("/OA/img/imgadd.png");
+	height: 92px;
+	width: 70px;
+	background-size: 100%;
+	opacity: 0;
+	cursor: pointer;
+}
+
+#photo {
+	width: 70px;
+	height: 92px;
+	background-image: url("/OA/img/imgadd.png");
+	background-size: 100%;
+	margin: 10px 20px;
+	cursor: pointer;
+}
+
+#center {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+#center div {
+	height: 90px;
+	width: 70px;
+	cursor: pointer;
+	margin:30px 30px;
+	float: left;
+	/* position: absolute;
+	top: 30px;
+	left: 30px; */
+}
+#center div p {
+	text-align: center;
+	color: #fff;
+}
+#appphotos{
+	height: 92px;
+	width: 70px;
+	cursor: pointer;
+	background-image: url("/OA/img/imgadd.png");
+	background-size: 100%;
+	background-repeat: no-repeat;
+    margin: 20px auto;
+}
+#appphotos input {
+	height: 92px;
+	width: 70px;
+	opacity: 0;
+	cursor: pointer;
+}
+#app{
+width: 100%;
+height: auto;
+
+
+}
+#app td {
+line-height:30px;
+	text-align: center;
+	margin: 0 auto;
+	font-family: '宋体';
+	color: #aaa;
+}
+#valbutton{
+width: 100px;
+height: 30px;
+
+}
+#onnav span{
+margin-left: 30px;
+height: 40px;
+width:70px;
+
+display: block;
+float: left;
+text-align:center;
+line-height: 40px;
+background: linear-gradient(#eee, #ccc);
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+color: #555;
+}
+	#onnav span:hover {
+		background: linear-gradient(#ddd, #bbb);
+		color: #fff;
+	}
+	#down_remind > div{
+		float: left;
+	}
+	#down_num {
+	margin-left: 1.5%
+	}
+	#down_title{
+	margin-left: 35%
+	}
+	#down_infm{
+	margin-left: 35%;
+	}
+	#down_infm  >.icon{
+		float: left;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	.icon > img{
+		cursor:pointer;
+		width: 30px;
+		height: 30px;
+	}
+	#icon_news{
+		background-color:#90C1D0;
+		position:absolute;
+		left:400px;
+		top:300px;
+		border:0px solid black;
+		width: 600px;
+		height: 400px;
+	}
+	#icon_infm{
+		background-color:#90C1D0;
+		position:absolute;
+		left:900px;
+		top:300px;
+		border:0px solid black;
+		width: 500px;
+		height: 400px;
+	}
+	#icon_pope{
+		background-color:#90C1D0;
+		position:absolute;
+		left:1200px;
+		top:300px;
+		border:0px solid black;
+		width: 250px;
+		height: 400px;
+	}
+	.button{
+		text-align: center;
+	}
+	#new_noc_title{
+		margin-bottom:10px;
+		position: relative;
+		top:0px;
+		left: 0px; 
+		text-align: center;
+	}
+	.noc_iterm_history{
+		margin-left: 300px;
+	}
+	.icon_img > div>a{
+		text-decoration: none;
+		color: #4897E6;
+		font-size: 20px;
+	}

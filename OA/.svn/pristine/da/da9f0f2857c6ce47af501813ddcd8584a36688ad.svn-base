@@ -1,0 +1,12 @@
+package com.oa.dao;
+
+import java.util.List;
+
+import com.oa.entity.UserApp;
+import com.oa.entity.UserEntity;
+
+public interface UserDao {
+public UserEntity login(String username,String password);
+public boolean logintime(String username);
+public List<UserApp> appselect(int uid);
+}

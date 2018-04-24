@@ -1,0 +1,9 @@
+package com.oa.dao.implments_achieve;
+
+import org.springframework.stereotype.Repository;
+
+import com.oa.dao.UserDao;
+@Repository
+public class UserDaoImp implements UserDao{
+	
+}

@@ -1,0 +1,189 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+*{
+margin: 0;
+padding: 0;
+}
+table {
+border-radius:10px;
+	width: 70%;
+	height: auto;
+	margin: 30px auto;
+}
+table td {
+	 width: 50%;
+	 text-align: center;
+	 line-height: 30px;
+}
+#face{
+width: 100%;
+height: 300px;
+margin-top: 50px;
+}
+#mengban {
+	width: 1400px;
+	height: 800px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background-color: #000;
+	display: none;
+	opacity: 0.7;
+}
+
+#messge {
+	width: 400px;
+	height: 300px;
+	background-color: #fff;
+	position: absolute;
+	left: 450px;
+	top: 200px;
+	display: none;
+	z-index: 1;
+	border-radius: 10px;
+	font-weight: 700;
+	font-family: '黑体';
+}
+
+#closemessge {
+	text-align: right;
+	margin-right: 20px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+#messgecon {
+	width: 100%;
+	height: 100%;
+	margin: 20px auto;
+	position: relative;
+}
+
+#messgecon img {
+	margin-left: 20px;
+	border-radius: 50px;
+	cursor: pointer;
+}
+
+#titles {
+	margin-left: 20px;
+	color: #ccc;
+}
+#gundong{
+width: 65%;
+float: left;
+}
+#myvideo{
+width: 40%;
+display:inline;
+}
+#video{
+border: 10px double #ccc;
+border-radius: 10px;
+}
+#canvas{
+width: 400px;
+height: 300px;
+display: none;
+position: absolute;
+top: -90px;
+left: -90px;
+}
+#img{
+width: 400px;
+height: 300px;
+display: none;
+position: absolute;
+top: -90px;
+left: -90px;
+}
+</style>
+<script type="text/javascript" src="/OA/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src = 'http://webapi.amap.com/maps?v=1.4.0&key=6100d75a8f96ccb8a9004b4d48e2c57a'></script> <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script>
+<script type="text/javascript" src="/OA/js/punchcard.js"></script>
+</head>
+<body>
+<div id='container' style="width: 25%; height: 300px;border:10px double #eee; overflow: hidden; float: left;margin: 10px 10px;border-radius: 10px;"></div>
+<div>
+<table>
+<tr>
+<th colspan="2"><h2 style="color: #bbb;font-size: 25px;height: 60px;line-height: 60px;">每日考勤</h2></th>
+</tr>
+<tr>
+<td>打卡人</td>
+<td ><p id="name"></p></td>
+</tr>
+<tr>
+<td>打卡时间</td>
+<td><p id='nowtime'></p></td>
+</tr>
+<tr>
+<td>当前位置</td>
+<td><p id="location"></p><input type="hidden" id="local" ></td>
+</tr>
+<tr>
+<td>公司地点</td>
+<td>经度：104 纬度：30</td>
+</tr>
+<tr>
+<td colspan="2" style="line-height: 70px;height: 70px;">
+<input id="upbutton"  type="button" onclick="upcard()" value="打卡" style="height: 40px;width: 70px;"> 
+</td>
+</tr>
+</table></div>
+<div id="face">
+<div id="gundong">
+<marquee id="imgsco" behavior="scroll" contenteditable="true" onstart="this.firstChild.innerHTML+=this.firstChild.innerHTML;" scrollamount="3" width="100%" onmouseover="this.stop();" onmouseout="this.start();"></marquee>
+<marquee id="imgsco1"  direction="right"  behavior="scroll" contenteditable="true" onstart="this.firstChild.innerHTML+=this.firstChild.innerHTML;" scrollamount="3" width="100%" onmouseover="this.stop();" onmouseout="this.start();"></marquee>
+</div>
+<div id="myvideo">
+<video id="video" width="400" height="300" autoplay="autoplay"></video>
+</div>
+<div style="height: 30px;width: 100%;float: left;">
+   <canvas id='canvas' width='400' height='300'></canvas>
+    <img id='img' src=''>
+</div>
+</div>
+	<div id="mengban"></div>
+	<!--网页使用蒙版  -->
+	<div id="messge">
+		<p id='closemessge'>X</p>
+		<h2 id="titles"></h2>
+		<div id="messgecon"></div>
+	</div>
+  <script>
+    var video = document.getElementById('video'),
+    canvas = document.getElementById('canvas'),
+    img = document.getElementById('img'),
+        videourl = window.URL || window.webkitURL;
+        
+    //媒体对象
+    navigator.getMedia = navigator.getUserMedia ||
+                         navagator.webkitGetUserMedia ||
+                         navigator.mozGetUserMedia ||
+                         navigator.msGetUserMedia;
+    navigator.getMedia({
+        video: true, 
+        audio: false 
+    }, function(strem){
+        video.src = videourl.createObjectURL(strem);
+    }, function(error) {
+        console.log(error);
+    });
+        //绘制canvas图形
+        setTimeout(function() {
+        canvas.getContext('2d').drawImage(video, 0, 0, 400, 300);
+       //把canvas图像转为img图片
+       img.src = canvas.toDataURL("image/png");
+			
+		}, 5000);
+        
+  </script>
+</body>
+</html>

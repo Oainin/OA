@@ -1,0 +1,204 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>OA办公自动化主界面</title>
+<style type="text/css">
+*{
+margin: 0;
+padding: 0;
+
+}
+body {
+	background-image: url("/OA/img/535eb53d44c6361e075d23e9c6358c9d.jpg");
+}
+#header{
+height: 30%;
+width: 100%;
+
+}
+#content{
+width: 100%;
+height: 568px;
+position: absolute;
+left: 0;
+top:140px;
+opacity: 0.5;
+background-color: #bbb;
+}
+#foot{
+height: 40px;
+width: 100%;
+position: absolute;
+top:708px;
+left: 0;
+background: linear-gradient(#ccc, #aaa);
+}
+#logoortime{
+height: 100px;
+width: 100%;
+position: absolute;
+top: 0;
+left: 0;
+display: none;
+}
+#time{
+width:250px;
+
+
+font-size: 30px;
+color: #ccc;
+font-weight: 900;
+font-family: '黑体';
+text-align: right;
+}
+#days{
+font-size: 20px;
+font-weight: 700;
+color: #ccc;
+text-align: right;
+
+}
+#timeorday{
+width: 250px;
+height: 100px;
+float: right;
+margin-right: 10px;
+margin-top: 10px;
+}
+#logo{
+float: left;
+margin: 10px 10px;
+color: #eee;
+}
+#bodyb{
+background-color: #eee;
+opacity: 0.3;
+width: 10000px;
+height: 750px;
+display: none;
+}
+#nav{
+width: 100%;
+height: 40px;
+position: absolute;
+left: 0;
+top:100px;
+background: linear-gradient(#fff, #ccc);
+opacity: 0.5;
+}
+#nav  img{
+margin: 3px 3px;
+line-height: 40px;
+float: left;
+}
+#memu{
+width: 300px;
+height: 400px;
+position: absolute;
+left: 5px;
+top: 133px;
+background-color: #aaa;
+display: none;
+border-radius: 10px;
+border-top-left-radius:0;
+opacity: 0.5;
+}
+#nav p{
+line-height: 40px;
+margin-left: 50px;
+float: left;
+}
+#con{
+width: 250px;
+height: 38px;
+float: right;
+}
+#con img {
+	cursor: pointer;
+	margin-left: 20px;
+}
+</style>
+<script type="text/javascript" src="/OA/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('#updown').attr("src","/OA/img/up126.png");
+	$('#time').css("float","right");
+	
+	setInterval(function(){
+		$('#bodyb').slideDown();
+		$('#logoortime').fadeIn();
+	}, 1000);
+	
+setInterval(times, 1000);
+$('#startmemu').css("cursor","pointer");
+$('#startmemu').click(function() {
+	$('#memu').fadeToggle();
+	setTimeout(function() {
+		$('#memu').fadeOut();
+	}, 3000);
+});
+$('#updown').click(function() {
+	if($('#updown').attr("src")=="/OA/img/up126.png"){
+		
+	$('#updown').attr("src","/OA/img/down77.png");
+	$('#logo').slideUp();
+	$('#time').slideUp();
+	$('#days').slideUp();
+	$('#nav').animate({top:"0"});
+	$('#content').animate({top:"40px",height:"668px"},1000);
+	$('#memu').css("top","33px");
+	
+	}else{
+		$('#updown').attr("src","/OA/img/up126.png");
+		$('#logo').slideDown();
+		$('#time').slideDown();
+		$('#days').slideDown();
+		$('#nav').animate({top:"100px"});
+		$('#content').animate({top:"140px",height:"568px"});
+		$('#memu').css("top","133px");
+	}
+});
+});
+function times() {
+	var timer=new Date();
+	var h=timer.getHours();
+	var m=timer.getMinutes();
+	var s=timer.getSeconds();
+	var y=timer.getFullYear();
+	var M=timer.getMonth()+1;
+	var D=timer.getDate();
+	//var d=timer.getDay();'
+	$('#time').text(fom(h)+":"+fom(m)+":"+fom(s));
+	$('#days').text(y+"年"+M+"月"+D+"日");
+}
+function fom(a) {
+	if(a<10){
+		a="0"+a;
+		return a;
+	}
+	else{
+		return a;
+	}
+}
+</script>
+</head>
+<body>
+<div id="bodyb"></div><!-- 负责背景图蒙版 可以修改透明度 -->
+<div id="header">
+<div id="logoortime"><!-- 上部div负责logo和时间  -->
+<h1 id="logo">OA办公自动化系统</h1><!-- 添加系统logo -->
+<div id="timeorday">
+<p id="time"></p><!--时间显示  -->
+<p id="days"></p>
+</div>
+</div>
+<div id="nav"><img id="startmemu" width="30" height="30" src='/OA/img/menu26.png'><p id="onnav">12</p><div id="con"><img width="30" height="30" src='/OA/img/password_1.png'><img width="30" height="30" src='/OA/img/speech-bubble.png'><img width="30" height="30" src='/OA/img/wrench15.png'><img id="updown" width="30" height="30" src=''></div></div>
+</div>
+<div id="content">123</div><!--中心框架 负责功能卡显示 和页面显示  -->
+<div id="foot">123</div><!--页脚显示 显示在线人数、通知等  -->
+<div id="memu"></div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+package com.oa.controller;
+
+import java.io.IOException;
+
+import javax.annotation.Resource;
+
+import org.apache.struts2.ServletActionContext;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import com.google.gson.Gson;
+import com.oa.entity.Result;
+import com.oa.entity.UserEntity;
+import com.oa.service.UserService;
+import com.opensymphony.xwork2.ActionSupport;
+
+@SuppressWarnings("serial")
+@Controller
+@Scope("prototype")
+public class UserController extends ActionSupport {
+	private UserService service;
+
+	@Resource(name = "userServiceImp")
+	public void setService(UserService service) {
+		this.service = service;
+	}
+
+	private UserEntity user;
+
+	public UserEntity getUser() {
+		return user;
+	}
+
+	public void setUser(UserEntity user) {
+		this.user = user;
+	}
+
+	public String login() {
+		return "login";
+
+	}
+
+	public void messge() throws IOException {
+		ServletActionContext.getResponse().setContentType("text/html;charset=utf-8");
+		UserEntity user = (UserEntity) ServletActionContext.getRequest().getSession().getAttribute("USER");
+		Result<UserEntity> result = new Result<>();
+		Gson gson=new Gson();
+		if (user != null) {
+			result.setT(user);
+			result.setFlag(true);
+			result.setContent("获取成功");
+		} else {
+			result.setFlag(false);
+			result.setContent("尴尬");
+		}
+		ServletActionContext.getResponse().getWriter().print(gson.toJson(result));
+
+	}
+
+	public String index() {
+		if (ServletActionContext.getRequest().getSession().getAttribute("USER") != null) {
+
+			return SUCCESS;
+		} else {
+			return "login";
+		}
+	}
+
+	public String clean() {
+		ServletActionContext.getRequest().getSession().invalidate();
+
+		return "login";
+
+	}
+
+	public String loginDo() {
+		UserEntity users = service.login(user.getUsername(), user.getPassword());
+		if (users != null) {
+			ServletActionContext.getRequest().getSession().setAttribute("USER", users);
+			user = (UserEntity) ServletActionContext.getRequest().getSession().getAttribute("USER");
+			return SUCCESS;
+		}
+
+		else {
+			return "login";
+		}
+
+	}
+}

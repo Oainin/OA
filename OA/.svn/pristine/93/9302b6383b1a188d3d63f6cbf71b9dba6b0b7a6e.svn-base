@@ -1,0 +1,154 @@
+package com.oa.controller;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.UUID;
+
+import javax.annotation.Resource;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import com.google.gson.Gson;
+import com.oa.entity.Result;
+import com.oa.entity.UserApp;
+import com.oa.entity.UserEntity;
+import com.oa.service.UserService;
+import com.opensymphony.xwork2.ActionSupport;
+
+@Controller
+@Scope("prototype")
+public class UserController extends ActionSupport {
+	private UserService service;
+
+	@Resource(name = "userServiceImp")
+	public void setService(UserService service) {
+		this.service = service;
+	}
+
+	private UserEntity user;
+	private File appphoto;
+    private UserApp app;
+    
+	public UserApp getApp() {
+		return app;
+	}
+
+	public void setApp(UserApp app) {
+		this.app = app;
+	}
+
+	public UserEntity getUser() {
+		return user;
+	}
+
+	public void setUser(UserEntity user) {
+		this.user = user;
+	}
+
+	public String login() {
+		return "login";
+
+	}
+
+	public File getAppphoto() {
+		return appphoto;
+	}
+
+	public void setAppphoto(File appphoto) {
+		this.appphoto = appphoto;
+	}
+
+	private String appphotoFileName;
+
+	public String getAppphotoFileName() {
+		return appphotoFileName;
+	}
+
+	public void setAppphotoFileName(String appphotoFileName) {
+		this.appphotoFileName = appphotoFileName;
+	}
+
+	public String upDo() {
+		try {
+			UserEntity user = (UserEntity) ServletActionContext.getRequest().getSession().getAttribute("USER");
+			
+			System.out.println(user.getUid());
+			String uuid=UUID.randomUUID().toString();
+			 appphotoFileName=appphotoFileName.substring(appphotoFileName.lastIndexOf("."));
+			 String root = ServletActionContext.getServletContext().getRealPath("/upload");
+		UserApp apps=new UserApp();
+		apps.setAppimg("/OA/update/"+uuid+appphotoFileName);
+		apps.setAppname(app.getAppname());
+		apps.setAppurl(app.getAppurl());
+		apps.setUid(user.getUid());
+		apps.setApptime(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(Calendar.getInstance().getTime()));
+		if(service.appinsert(apps)) {
+			FileUtils.copyFile(appphoto, new File(root+ uuid+appphotoFileName));
+			
+			return SUCCESS;
+			
+		}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return SUCCESS;
+
+	}
+
+	public void messge() throws IOException {
+		ServletActionContext.getResponse().setContentType("text/html;charset=utf-8");
+		UserEntity user = (UserEntity) ServletActionContext.getRequest().getSession().getAttribute("USER");
+		Result<UserEntity> result = new Result<>();
+		Gson gson = new Gson();
+		if (user != null) {
+			result.setT(user);
+			result.setFlag(true);
+			result.setContent("获取成功");
+			result.setList(service.appselect(user.getUid()));
+		} else {
+			result.setFlag(false);
+			result.setContent("尴尬");
+		}
+		ServletActionContext.getResponse().getWriter().print(gson.toJson(result));
+		index();
+	}
+
+	public String index() {
+		if (ServletActionContext.getRequest().getSession().getAttribute("USER") != null) {
+			user = (UserEntity) ServletActionContext.getRequest().getSession().getAttribute("USER");
+
+			return SUCCESS;
+		} else {
+			return "login";
+		}
+	}
+
+	public String clean() {
+		ServletActionContext.getRequest().getSession().invalidate();
+
+		return "login";
+
+	}
+
+	public String loginDo() {
+		UserEntity users = service.login(user.getUsername(), user.getPassword());
+		if (users != null) {
+			ServletActionContext.getRequest().getSession().setAttribute("USER", users);
+			user = (UserEntity) ServletActionContext.getRequest().getSession().getAttribute("USER");
+
+			return SUCCESS;
+		}
+
+		else {
+			return "login";
+		}
+
+	}
+}

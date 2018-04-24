@@ -1,0 +1,7 @@
+package com.huohr.dao.implmentachieve;
+
+import com.huohr.dao.UserDao;
+
+public class UserDaoImp_Ach implements UserDao{
+	
+}

@@ -1,0 +1,90 @@
+package com.oa.service.implments_achieve;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.springframework.stereotype.Service;
+
+import com.oa.dao.UserDao;
+import com.oa.entity.UserApp;
+import com.oa.entity.UserEntity;
+import com.oa.service.UserService;
+
+@Service
+public class UserServiceImp implements UserService {
+	private UserDao userdao;
+
+	@Resource(name = "userDaoImp")
+	public void setUserdao(UserDao userdao) {
+		this.userdao = userdao;
+	}
+
+	@Override
+	public UserEntity login(String username, String password) {
+		// TODO Auto-generated method stub
+		if (userdao.logintime(username)) {
+			return userdao.login(username, password);
+		} else {
+
+			return null;
+
+		}
+	}
+
+	@Override
+	public List<UserApp> appselect(String status) {
+		// TODO Auto-generated method stub
+		return userdao.appselect(status);
+	}
+
+	@Override
+	public boolean appinsert(UserApp app) {
+		// TODO Auto-generated method stub
+		return userdao.appinsert(app);
+	}
+
+	@Override
+	public boolean closeimg(int aid) {
+		// TODO Auto-generated method stub
+		return userdao.closeimg(aid);
+	}
+
+	@Override
+	public boolean insertpunchcard(String a, String b, int uid) {
+		// TODO Auto-generated method stub
+		return userdao.insertpunchcard(a, b, uid);
+	}
+
+	@Override
+	public boolean dcardDo(int uid) {
+		// TODO Auto-generated method stub
+		return userdao.dcardDo(uid);
+	}
+
+	@Override
+	public boolean reg(UserEntity user) {
+		// TODO Auto-generated method stub
+		return userdao.reg(user);
+	}
+
+	@Override
+	public boolean logintime(String username) {
+		// TODO Auto-generated method stub
+		return userdao.logintime(username);
+	}
+
+	@Override
+	public List<UserApp> appall(int uid) {
+		// TODO Auto-generated method stub
+		return userdao.appall(uid);
+	}
+
+	@Override
+	public List<UserApp> userall(String status) {
+		// TODO Auto-generated method stub
+		return userdao.userall(status);
+	}
+
+	
+}

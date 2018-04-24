@@ -1,0 +1,40 @@
+window.onload = function() {
+	ajaxaa(0,"sheng");
+}
+$(function(){
+	$("#username").change(function(){
+		$("#name").val($("#username").val());
+	});
+})
+function ajaxaa(parent_id, selectid) {
+	$.ajax({
+		url : "/OA/area_select",
+		type : "post",
+		data : {
+			"area.id" : parent_id
+		},
+		dataType : "json",
+		async : true,
+		success : function(data) {
+			var select = $("#" + selectid);
+			select.empty();
+			for (var i = 0; i < data.length; i++) {
+				var option = $("<option></option>");
+				option.val(data[i].id);
+				option.text(data[i].name);
+				select.append(option);
+			}
+			var nid = select.val();
+			if (selectid =="qu") {
+				var adresss=$("#adress");
+				var i=$("#sheng option:selected").text()+$("#shi option:selected").text()+$("#qu option:selected").text();
+				adresss.val(i);
+			}
+			if (selectid == 'sheng') {
+				ajaxaa(nid, 'shi');
+			} else if (selectid == 'shi') {
+				ajaxaa(nid, 'qu');
+			}
+		},
+	});
+}

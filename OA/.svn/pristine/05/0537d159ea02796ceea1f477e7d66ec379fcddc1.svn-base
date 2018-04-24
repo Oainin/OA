@@ -1,0 +1,33 @@
+package com.oa.controller;
+
+import javax.annotation.Resource;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Controller;
+
+import com.oa.entity.UserEntity;
+import com.oa.service.UserService;
+
+@Controller
+@Scope("prototype")
+public class UserController {
+private UserService service;
+
+@Resource(name="userServiceImp")
+public void setService(UserService service) {
+	this.service = service;
+}
+private UserEntity entity;
+
+public UserEntity getEntity() {
+	return entity;
+}
+public void setEntity(UserEntity entity) {
+	this.entity = entity;
+}
+
+public String login() {
+	return "login";
+	
+}
+}
